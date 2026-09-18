@@ -1,5 +1,6 @@
 import About from "../components/About";
 import Hero from "../components/Hero";
+import Projects from "../components/Projects";
 import XmbBackground from "../components/XmbBackground";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <div className="relative z-10">
         <Hero />
         <About />
+        <Projects/>
       </div>
     </main>
   );
