@@ -205,4 +205,32 @@
     drop-shadow(0 0 14px rgba(255, 255, 255, 0.18));
 }
 
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wave-primary) var(--color-background);
+}
 
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-wave-secondary),
+    var(--color-wave-primary)
+  );
+
+  border-radius: 999px;
+  border: 2px solid var(--color-background);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wave-highlight);
+}

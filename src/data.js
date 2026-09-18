@@ -16,7 +16,7 @@ export const links = [
   },
   {
     label: "Resume",
-    href: "/resume.pdf",
+    href: "/Miguel_Software_Developer_Resume.pdf",
     icon: HiOutlineDocumentText,
   },
 ];

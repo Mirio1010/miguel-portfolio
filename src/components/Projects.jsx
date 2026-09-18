@@ -7,12 +7,12 @@ const Projects = () => {
       id="projects"
       className="mx-auto w-full max-w-[1600px] px-6 sm:px-12 lg:px-20"
     >
-      <div className="border-t border-[var(--color-border)] py-24 sm:py-28">
-        <p className="mb-12 font-mono text-xs tracking-[0.18em] text-[var(--color-text-secondary)] uppercase">
+      <div className="border-t border-[var(--color-border)] py-28 sm:py-32 lg:py-40">
+        <p className="mb-16 font-mono text-xs tracking-[0.18em] text-[var(--color-text-secondary)] uppercase">
           Projects
         </p>
 
-        <div className="space-y-24">
+        <div className="space-y-32 lg:space-y-40">
           {projects.map((project, index) => (
             <Project
               key={project.title}
