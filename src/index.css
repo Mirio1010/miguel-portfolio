@@ -3,22 +3,22 @@
 :root {
   color-scheme: dark;
 
-  --color-background: #0d0f0e;
-  --color-surface: #151816;
+  --color-background: #151515;
+  --color-surface: #1f1f1f;
 
-  --color-text-primary: #f4f1ea;
-  --color-text-secondary: #9b9f99;
+  --color-text-primary: #f2f2ef;
+  --color-text-secondary: #a6a6a3;
 
-  --color-accent: #ff6b3d;
+  --color-accent: #d0d0cc;
+  --color-border: #353535;
 
-  --color-border: #272b28;
+  /* Stainless-steel / silver wave palette */
+  --color-wave-primary: #8f9191;
+  --color-wave-secondary: #666868;
+  --color-wave-highlight: #dedfdd;
+  --color-wave-warm: #a7a7a4;
 
-  /* Wave palette and overall intensity, independent of the UI accent. */
-  --color-wave-primary: #899e95;
-  --color-wave-secondary: #657a72;
-  --color-wave-highlight: #d1d6ca;
-  --color-wave-warm: #b88d76;
-  --wave-opacity: 0.55;
+  --wave-opacity: 0.62;
 
   /* Each duration is one slow pass; alternate reverses it smoothly. */
   --wave-duration-1: 16s;
@@ -70,11 +70,14 @@
 }
 /* Decorative layer: no interaction, layout impact, or JavaScript animation. */
 .xmb-background {
-  position: absolute;
+  position: fixed;
   inset: 0;
+
   z-index: 0;
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
   pointer-events: none;
   opacity: var(--wave-opacity);
@@ -149,3 +152,57 @@
     transform: translate(5%, -1%) scale(1.03, 0.98) rotate(1.5deg);
   }
 }
+
+
+.xmb-link {
+  color: var(--color-text-secondary);
+  opacity: 0.65;
+  transform: scale(0.94);
+
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease,
+    color 220ms ease,
+    text-shadow 220ms ease;
+}
+
+/* GitHub / LinkedIn / Resume icons */
+.xmb-link svg {
+  width: 1.6rem;
+  height: 1.6rem;
+
+  color: inherit;
+
+  filter: drop-shadow(0 0 0 transparent);
+
+  transition:
+    transform 220ms ease,
+    filter 220ms ease,
+    color 220ms ease;
+}
+
+/* PS3-style focused state */
+.xmb-link:hover,
+.xmb-link:focus-visible {
+  color: var(--color-text-primary);
+  opacity: 1;
+  transform: scale(1.08);
+
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.65);
+}
+
+/* Make the icon glow slightly more than the text */
+.xmb-link:hover svg,
+.xmb-link:focus-visible svg {
+  color: var(--color-wave-highlight);
+
+  transform: scale(1.12);
+
+  filter:
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.45))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.18));
+}
+
+
