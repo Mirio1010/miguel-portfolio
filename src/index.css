@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+
+  --color-background: #0d0f0e;
+  --color-surface: #151816;
+
+  --color-text-primary: #f4f1ea;
+  --color-text-secondary: #9b9f99;
+
+  --color-accent: #ff6b3d;
+
+  --color-border: #272b28;
+
+  /* Wave palette and overall intensity, independent of the UI accent. */
+  --color-wave-primary: #899e95;
+  --color-wave-secondary: #657a72;
+  --color-wave-highlight: #d1d6ca;
+  --color-wave-warm: #b88d76;
+  --wave-opacity: 0.55;
+
+  /* Each duration is one slow pass; alternate reverses it smoothly. */
+  --wave-duration-1: 16s;
+--wave-duration-2: 21s;
+--wave-duration-3: 27s;
+--wave-duration-4: 19s;
+--wave-duration-5: 32s;
+
+  --type-sans: "Helvetica Neue", Arial, sans-serif;
+  --type-mono: "SFMono-Regular", Consolas, monospace;
+}
+
+@theme inline {
+  --font-sans: var(--type-sans);
+  --font-mono: var(--type-mono);
+}
+
+@layer base {
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--type-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-background);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 6px;
+  }
+}
+
+/* A quiet entrance for the existing Hero. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-enter {
+    animation: hero-enter 800ms ease-out both;
+  }
+
+  @keyframes hero-enter {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+/* Decorative layer: no interaction, layout impact, or JavaScript animation. */
+.xmb-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--wave-opacity);
+}
+
+.xmb-wave {
+  fill: none;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.xmb-wave-1 {
+  stroke: var(--color-wave-primary);
+  stroke-width: 28;
+  opacity: 0.2;
+  filter: blur(10px);
+  --wave-duration: var(--wave-duration-1);
+  --wave-delay: -17s;
+}
+
+.xmb-wave-2 {
+  stroke: var(--color-wave-secondary);
+  stroke-width: 9;
+  opacity: 0.3;
+  filter: blur(3px);
+  --wave-duration: var(--wave-duration-2);
+  --wave-delay: -31s;
+}
+
+.xmb-wave-3 {
+  stroke: var(--color-wave-highlight);
+  stroke-width: 1.2;
+  opacity: 0.4;
+  --wave-duration: var(--wave-duration-3);
+  --wave-delay: -11s;
+}
+
+.xmb-wave-4 {
+  stroke: var(--color-wave-primary);
+  stroke-width: 2;
+  opacity: 0.25;
+  filter: blur(0.6px);
+  --wave-duration: var(--wave-duration-4);
+  --wave-delay: -37s;
+}
+
+.xmb-wave-5 {
+  stroke: var(--color-wave-warm);
+  stroke-width: 3;
+  opacity: 0.16;
+  filter: blur(1.5px);
+  --wave-duration: var(--wave-duration-5);
+  --wave-delay: -53s;
+}
+
+/* Static by default, including when reduced motion is requested. */
+@media (prefers-reduced-motion: no-preference) {
+  .xmb-wave {
+    animation: xmb-drift var(--wave-duration) ease-in-out var(--wave-delay) infinite alternate;
+  }
+}
+
+@keyframes xmb-drift {
+  0% {
+    transform: translate(-4%, -2%) scale(1.04, 0.94) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate(1%, 2%) scale(1.08, 1.06) rotate(0.5deg);
+  }
+  100% {
+    transform: translate(5%, -1%) scale(1.03, 0.98) rotate(1.5deg);
+  }
+}
