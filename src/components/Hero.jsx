@@ -1,15 +1,32 @@
 
 import {links} from '../data'
-
+import { useEffect, useState } from "react";
 // Add your profile URLs and a resume URL (or "/resume.pdf" in public/) here.
 // Empty destinations stay inactive instead of leading to a broken page.
 
 
 const Hero = () => {
+
+     const [showScrollCue, setShowScrollCue] = useState(true);
+
+     useEffect(() => {
+       const handleScroll = () => {
+         setShowScrollCue(window.scrollY < 80);
+       };
+
+       window.addEventListener("scroll", handleScroll);
+
+       return () => {
+         window.removeEventListener("scroll", handleScroll);
+       };
+     }, []);
+
+
+
   return (
     <section
       aria-labelledby="hero-heading"
-      className="mx-auto flex min-h-svh w-full max-w-[1600px] flex-col px-6 sm:px-12 lg:px-20"
+      className="relative mx-auto flex min-h-svh w-full max-w-[1600px] flex-col px-6 sm:px-12 lg:px-20"
     >
       <header className="flex items-center justify-between border-b border-[var(--color-border)] py-7"></header>
 
@@ -25,7 +42,7 @@ const Hero = () => {
 
         <div className="min-w-0">
           <p className="mb-6 font-mono text-xs tracking-wide text-[var(--color-accent)] sm:text-sm">
-            Full-Stack Web Devloper
+            Full-Stack Web Developer
           </p>
 
           <h1
@@ -75,6 +92,15 @@ const Hero = () => {
           </nav>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <a
+        href="#about"
+        aria-label="Go to about section"
+        className={`scroll-cue ${showScrollCue ? "scroll-cue-visible" : "scroll-cue-hidden"}`}
+      >
+        ↓
+      </a>
     </section>
   );
 };

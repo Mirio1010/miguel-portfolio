@@ -234,3 +234,52 @@
 *::-webkit-scrollbar-thumb:hover {
   background: var(--color-wave-highlight);
 }
+
+
+
+
+.scroll-cue {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1;
+
+  animation: scroll-cue 1.5s ease-in-out infinite;
+
+  transition:
+    opacity 300ms ease,
+    color 200ms ease,
+    text-shadow 200ms ease;
+}
+
+.scroll-cue-visible {
+  opacity: 0.45;
+  pointer-events: auto;
+}
+
+.scroll-cue-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-cue:hover {
+  color: var(--color-text-primary);
+  opacity: 1;
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    transform: translate(-50%, 10px);
+  }
+}
+
+
+
