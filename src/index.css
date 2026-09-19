@@ -20,6 +20,11 @@
 
   --wave-opacity: 0.62;
 
+  /* Dust intensity, small halos, and playback speed (2 = twice as fast). */
+  --particle-opacity: 0.75;
+  --particle-glow-opacity: 0.16;
+  --particle-speed-multiplier: 1.25;
+
   /* Each duration is one slow pass; alternate reverses it smoothly. */
   --wave-duration-1: 16s;
 --wave-duration-2: 21s;
@@ -86,6 +91,10 @@
 .xmb-wave {
   fill: none;
   stroke-linecap: round;
+}
+
+.xmb-wave,
+.xmb-particle-field {
   transform-box: view-box;
   transform-origin: center;
 }
@@ -136,8 +145,67 @@
 
 /* Static by default, including when reduced motion is requested. */
 @media (prefers-reduced-motion: no-preference) {
-  .xmb-wave {
+  .xmb-wave,
+  .xmb-particle-field {
     animation: xmb-drift var(--wave-duration) ease-in-out var(--wave-delay) infinite alternate;
+  }
+}
+
+/* Each field shares its source wave's transform, duration, and phase. */
+.xmb-particle-field {
+  display: none;
+  opacity: var(--particle-opacity);
+}
+
+.xmb-dust-front {
+  fill: var(--color-wave-highlight);
+}
+
+.xmb-dust-back {
+  fill: var(--color-wave-secondary);
+  opacity: 0.55;
+  filter: blur(0.35px);
+}
+
+.xmb-dust {
+  opacity: 0;
+}
+
+/* A tiny translucent halo on only a few particles, without per-dot filters. */
+.xmb-dust-glow {
+  fill: var(--color-wave-primary);
+  opacity: var(--particle-glow-opacity);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .xmb-particle-field {
+    display: inline;
+  }
+
+  .xmb-dust {
+    animation: xmb-dust-shed
+      calc(var(--dust-duration) / var(--particle-speed-multiplier))
+      ease-in-out
+      calc(var(--dust-delay) / var(--particle-speed-multiplier)) infinite;
+  }
+}
+
+@keyframes xmb-dust-shed {
+  0%, 8% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+  24% {
+    opacity: var(--dust-opacity);
+    transform: translate(calc(var(--dust-x) * 0.15), calc(var(--dust-y) * 0.15)) scale(var(--dust-scale));
+  }
+  60% {
+    opacity: calc(var(--dust-opacity) * 0.65);
+    transform: translate(calc(var(--dust-x) * 0.7), calc(var(--dust-y) * 0.7)) scale(var(--dust-scale));
+  }
+  92%, 100% {
+    opacity: 0;
+    transform: translate(var(--dust-x), var(--dust-y)) scale(0.4);
   }
 }
 
@@ -280,6 +348,3 @@
     transform: translate(-50%, 10px);
   }
 }
-
-
-
