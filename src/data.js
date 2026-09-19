@@ -40,7 +40,7 @@ export const projects = [
     type: "Team Project / Product Contribution",
 
     description:
-      "Worked on Candogram in a real startup environment, contributing to an existing production codebase by building a document generation and preview workflow with customizable templates and Puppeteer-based rendering.",
+      "I’m currently contributing to Candogram as a volunteer developer, working in an existing production codebase to help build and improve a resume generation and preview system. The feature supports customizable templates and lets users preview generated documents before downloading them.",
 
     contribution:
       "Built the template selection, preview generation, and document customization flow.",
@@ -48,12 +48,13 @@ export const projects = [
     image: CandogramImage,
 
     technologies: ["Vue", "Node.js", "Puppeteer"],
+    siteUrl: "https://www.candogram.com/",
   },
   {
     title: "Spoty",
     type: "Team Project",
     description:
-      "A full-stack social map application for discovering, creating, tagging, and sharing location-based pins with other users.",
+      "Built with a team through CUNY Tech Prep, Spoty is a social map for sharing places through tagged pins. We rebuilt the project in React as it grew, adding authentication, persistent user data, custom map interactions, and social features around discovering places shared by others.",
     contribution:
       "Worked on core map features, pin persistence, authentication, UI interactions, and integration across the application.",
     technologies: [

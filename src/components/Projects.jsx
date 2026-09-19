@@ -30,7 +30,7 @@ const Projects = () => {
 
 
 const Project = ({ project, reverse }) => {
-  const { title, description, technologies, image, github, live } = project;
+  const { title, description, technologies, image, github, live, siteUrl } = project;
 
   return (
     <article
@@ -70,6 +70,17 @@ const Project = ({ project, reverse }) => {
               className="xmb-link"
             >
               Live ↗
+            </a>
+          )}
+
+          {siteUrl && (
+            <a
+              href={siteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="xmb-link"
+            >
+              Visit Site ↗
             </a>
           )}
 

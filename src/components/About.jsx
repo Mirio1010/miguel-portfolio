@@ -16,14 +16,23 @@ const About = () => {
               id="about-heading"
               className="text-3xl leading-tight font-normal tracking-[-0.035em] text-[var(--color-text-primary)] sm:text-4xl"
             >
-              I&apos;m a NYC-based Computer Science graduate who enjoys building
-              full-stack applications and learning through real projects.
+              I’m a NYC-based developer who gets an idea and immediately starts
+              wondering how I could build it.
             </h2>
 
             <p className="mt-8 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              I like working across the stack, from building interfaces in React
-              to designing APIs and backend logic. What interests me most is
-              understanding how the different pieces of a system fit together.
+              Lately, that usually means building interfaces in React, writing
+              APIs with Node and Express, working with databases, and figuring
+              out how to make all of those pieces talk to each other. I learn
+              best by building real projects, especially when they force me to
+              learn something I didn’t know before.
+            </p>
+
+            <p className="mt-8 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
+              I’ve also been getting into home servers and self-hosting. I’ve
+              been experimenting with Linux, Docker, media servers, and
+              networking, mostly because I enjoy setting things up and
+              understanding how they work.
             </p>
 
             <p className="mt-6 text-sm text-[var(--color-text-secondary)]">
@@ -44,7 +53,7 @@ const hobbies = [
   "Gaming",
   "Anime & Movies",
   "Building Side Projects",
-  "Learning New Tech",
+  "Home Servers & Self-Hosting",
 ];
 
 const Hobbies = () => {
