@@ -9,7 +9,7 @@ const About = () => {
         <div className="grid gap-16 lg:grid-cols-[1fr_0.35fr] lg:gap-24">
           <div className="max-w-2xl">
             <p className="mb-6 font-mono text-xs tracking-[0.18em] text-[var(--color-text-secondary)] uppercase">
-              About
+              About Me :D
             </p>
 
             <h2

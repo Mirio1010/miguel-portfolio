@@ -25,10 +25,11 @@ const Hero = () => {
 
   return (
     <section
+      id="home"
       aria-labelledby="hero-heading"
       className="relative mx-auto flex min-h-svh w-full max-w-[1600px] flex-col px-6 sm:px-12 lg:px-20"
     >
-      <header className="flex items-center justify-between border-b border-[var(--color-border)] py-7"></header>
+      {/* <header className="flex items-center justify-between border-b border-[var(--color-border)] py-7"></header> */}
 
       <div className="hero-enter grid flex-1 content-center items-center gap-8 py-12 sm:py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,0.7fr)] md:gap-12 lg:gap-20">
         <img

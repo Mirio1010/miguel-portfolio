@@ -1,5 +1,5 @@
-// Particle density: 60 emitters, with only a portion visible at a given moment.
-const PARTICLES_PER_WAVE = 30;
+// Particle density: 108 emitters, with only a portion visible at a given moment.
+const PARTICLES_PER_WAVE = 54;
 
 // These cubic control points match the existing paths for waves 3 and 4.
 // S commands reflect the previous control point to form the next segment.
@@ -37,6 +37,8 @@ const particleFields = particleCurves.map((curve) => ({
   ...curve,
   particles: Array.from({ length: PARTICLES_PER_WAVE }, (_, index) => {
     const seed = index + curve.wave * 100;
+    // Favor faint dust, with a smaller number of bright silver highlights.
+    const brightness = variation(seed + 6) ** 1.5;
     const [x, y] = pointOnCurve(curve.segments, 0.6 + variation(seed) * 1.7);
     return {
       x, y,
@@ -44,13 +46,13 @@ const particleFields = particleCurves.map((curve) => ({
         ? 0.5 + variation(seed + 1) * 0.35
         : 0.65 + variation(seed + 1) * 0.85,
       distant: index % 3 === 0,
-      glow: index % 8 === 1,
+      glow: brightness > 0.8 && index % 3 !== 0,
       style: {
         '--dust-duration': `${5 + variation(seed + 2) * 7}s`,
         '--dust-delay': `${-variation(seed + 3) * 24}s`,
         '--dust-x': `${(variation(seed + 4) - 0.5) * 96}px`,
         '--dust-y': `${(variation(seed + 5) < 0.65 ? -1 : 1) * (35 + variation(seed + 8) * 55)}px`,
-        '--dust-opacity': 0.45 + variation(seed + 6) * 0.5,
+        '--dust-opacity': 0.18 + brightness * 0.82,
         '--dust-scale': 0.7 + variation(seed + 7) * 0.65,
       },
     };

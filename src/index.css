@@ -3,11 +3,11 @@
 :root {
   color-scheme: dark;
 
-  --color-background: #151515;
+  --color-background: #131313;
   --color-surface: #1f1f1f;
 
   --color-text-primary: #f2f2ef;
-  --color-text-secondary: #a6a6a3;
+  --color-text-secondary: #b1b1b0;
 
   --color-accent: #d0d0cc;
   --color-border: #353535;
@@ -347,4 +347,9 @@
   50% {
     transform: translate(-50%, 10px);
   }
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
