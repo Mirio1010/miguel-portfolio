@@ -69,7 +69,7 @@ const Project = ({ project, reverse }) => {
               rel="noopener noreferrer"
               className="xmb-link"
             >
-              Live ↗
+              Live 
             </a>
           )}
 
@@ -80,7 +80,7 @@ const Project = ({ project, reverse }) => {
               rel="noopener noreferrer"
               className="xmb-link"
             >
-              Visit Site ↗
+              Visit Site 
             </a>
           )}
 
@@ -91,7 +91,7 @@ const Project = ({ project, reverse }) => {
               rel="noopener noreferrer"
               className="xmb-link"
             >
-              GitHub ↗
+              GitHub 
             </a>
           )}
         </div>
