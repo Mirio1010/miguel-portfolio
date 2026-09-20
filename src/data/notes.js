@@ -21,7 +21,24 @@ export const notes = [
     pdfUrl:
       "https://aynidalwoaobbckkifly.supabase.co/storage/v1/object/public/portfolio-notes/JavaScript_notes.pdf",
   },
-  
+  {
+    id: "react",
+    title: "React",
+    description:
+      "Components, props, state, hooks, forms, context, reducers, and performance fundamentals.",
+    category: "Frontend development",
+    pdfUrl:
+      "https://7gzqpnjsobpgngcp.public.blob.vercel-storage.com/React_notes.pdf",
+  },
+  {
+    id: "dsa",
+    title: "Data Structures & Algorithms (Java)",
+    description:
+      "Core data structures, algorithms, problem-solving techniques, and complexity analysis.",
+    category: "Computer science fundamentals",
+    pdfUrl:
+      "https://7gzqpnjsobpgngcp.public.blob.vercel-storage.com/DSA_notes.pdf",
+  },
 ];
 
 // Optional year and pageCount fields appear on covers. The reader always uses
