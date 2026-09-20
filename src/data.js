@@ -29,7 +29,7 @@ export const projects = [
   {
     title: "Game Backlog Tracker",
     description:
-      "A full-stack game tracking app with Steam import, RAWG integration, authentication, and personal backlog management.",
+      "A full-stack game backlog manager that lets users track, organize, and import their game library from Steam.",
     technologies: ["React", "Node.js", "Express", "Supabase"],
     image: backlogTracker,
     github: "https://github.com/Mirio1010/game-backlog-tracker",

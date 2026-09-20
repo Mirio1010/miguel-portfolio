@@ -1,0 +1,304 @@
+.notes-section {
+  scroll-margin-top: 6rem;
+}
+.notebook-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 350px;
+  padding: 2rem 1.6rem 1.7rem 2.3rem;
+  text-align: left;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  border: 1px solid #494b4b;
+  border-radius: 3px 10px 10px 3px;
+  background: linear-gradient(
+    100deg,
+    #151616 0%,
+    #353737 4%,
+    #202222 7%,
+    #292b2b 9%,
+    #1d1e1e 60%,
+    #242525
+  );
+  box-shadow:
+    3px 4px 0 -1px #9b9b95,
+    5px 7px 0 -2px #424443,
+    0 14px 28px #0003;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+.notebook-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 1.1rem;
+  width: 1px;
+  background: #ffffff10;
+}
+.notebook-card:hover {
+  transform: translateY(-5px) rotate(-0.5deg);
+  border-color: #8f9191;
+  box-shadow:
+    3px 4px 0 -1px #bbbcb6,
+    5px 7px 0 -2px #555756,
+    0 20px 34px #0005;
+}
+.notebook-meta,
+.notebook-category,
+.notebook-open {
+  font-family: var(--type-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+  color: var(--color-text-secondary);
+}
+.notebook-meta,
+.notebook-open {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.notebook-cover-title {
+  margin-top: 3rem;
+  font-size: 2rem;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+.notebook-category {
+  margin-top: 0.75rem;
+  text-transform: uppercase;
+}
+.notebook-description {
+  margin: 1.4rem 0 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+.notebook-open {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #ffffff20;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+.notebook-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--color-text-primary);
+  background: transparent;
+  overflow: hidden;
+}
+.notebook-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+.notebook-dialog::backdrop {
+  background: rgba(9, 10, 10, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.reader-header {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--color-border);
+}
+.reader-header .notebook-category {
+  margin: 0;
+}
+.reader-header h2 {
+  margin: 0.3rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+.reader-button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #5a5d5b;
+  border-radius: 3px;
+  background: #242625;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.reader-button:hover:not(:disabled) {
+  background: #363a38;
+  border-color: #aaa;
+}
+.reader-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.reader-preview {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.reader-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.reader-stage {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.reader-book {
+  box-shadow:
+    0 16px 50px #0008,
+    0 3px 0 #96958d,
+    0 5px 0 #52544f;
+}
+.notebook-page {
+  background: #fff;
+  overflow: hidden;
+}
+.notebook-page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.notebook-page .react-pdf__Page {
+  background: white;
+}
+/* page-flip's global canvas rule is for its image renderer, not PDF canvases. */
+.notebook-dialog .notebook-page canvas {
+  position: static;
+  display: block;
+}
+.reader-book-spread .notebook-page::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #0000000d,
+    transparent 6%,
+    transparent 96%,
+    #00000012
+  );
+}
+.page-message {
+  display: block;
+  padding: 1rem;
+  color: #444;
+  text-align: center;
+  font-size: 0.8rem;
+}
+.reader-message {
+  margin: auto;
+  padding: 2rem;
+  max-width: 36rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+.reader-message .reader-button {
+  margin-top: 1rem;
+}
+.reader-footer {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0.8rem 1rem max(0.8rem, env(safe-area-inset-bottom));
+}
+.reader-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 3vw, 2rem);
+}
+.reader-count {
+  min-width: 6rem;
+  font-family: var(--type-mono);
+  font-size: 0.75rem;
+}
+.reader-hint {
+  margin-top: 0.6rem;
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+}
+.reader-original {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 400px) {
+  .reader-controls .reader-button {
+    padding-inline: 0.65rem;
+  }
+  .reader-count {
+    min-width: 5rem;
+  }
+}
+@media (max-height: 500px) {
+  .reader-header {
+    padding-block: 0.5rem;
+  }
+  .reader-hint {
+    display: none;
+  }
+  .reader-footer {
+    padding-block: 0.4rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .notebook-dialog[open] {
+    animation: reader-enter 180ms ease-out;
+  }
+  .notebook-dialog.is-closing {
+    animation: reader-exit 140ms ease-in forwards;
+  }
+  @keyframes reader-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes reader-exit {
+    to {
+      opacity: 0;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notebook-card {
+    transition: none;
+  }
+  .notebook-card:hover {
+    transform: none;
+  }
+}
