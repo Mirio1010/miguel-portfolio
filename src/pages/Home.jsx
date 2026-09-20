@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import XmbBackground from "../components/XmbBackground";
 import Navbar from "../components/Navbar";
+import NotesSection from "../components/notes/NotesSection";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <Hero />
         <About />
         <Projects />
+        <NotesSection />
         <Contact />
       </div>
     </main>
