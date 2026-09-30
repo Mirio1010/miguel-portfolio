@@ -11,7 +11,7 @@ export const notes = [
     description: "Page structure, styling, layouts, and responsive web design.",
     category: "Web foundations",
     pdfUrl:
-      "https://aynidalwoaobbckkifly.supabase.co/storage/v1/object/public/portfolio-notes/HTML_CSS_notes.pdf",
+      "https://7gzqpnjsobpgngcp.public.blob.vercel-storage.com/HTLM_CSS_notes.pdf",
   },
   {
     id: "javascript",
@@ -19,7 +19,7 @@ export const notes = [
     description: "Variables, functions, the DOM, and asynchronous programming.",
     category: "Javascript fundamentals",
     pdfUrl:
-      "https://aynidalwoaobbckkifly.supabase.co/storage/v1/object/public/portfolio-notes/JavaScript_notes.pdf",
+      "https://7gzqpnjsobpgngcp.public.blob.vercel-storage.com/JavaScript_notes.pdf",
   },
   {
     id: "react",
