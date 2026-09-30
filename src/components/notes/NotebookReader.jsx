@@ -64,7 +64,7 @@ function FlipBook({ total, current, onPage, size, onReady }) {
 export default function NotebookReader({ pdfUrl }) {
   const [documentInfo, setDocumentInfo] = useState(null);
   const [current, setCurrent] = useState(0);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [attempt, setAttempt] = useState(0);
   const [bounds, setBounds] = useState({ width: 0, height: 0 });
   const stageRef = useRef(null);
@@ -73,6 +73,12 @@ export default function NotebookReader({ pdfUrl }) {
   const ready = useCallback((book) => {
     controller.current = book;
   }, []);
+  const reportError = useCallback((cause) => {
+    if (!active.current) return;
+    const message = cause?.message || "Unknown PDF loading error";
+    console.error("Notebook PDF failed to load:", pdfUrl, cause);
+    setError(message);
+  }, [pdfUrl]);
 
   useEffect(() => {
     active.current = true;
@@ -125,8 +131,8 @@ export default function NotebookReader({ pdfUrl }) {
           total: pdf.numPages,
           ratio: viewport.width / viewport.height,
         });
-    } catch {
-      if (active.current) setError(true);
+    } catch (cause) {
+      reportError(cause);
     }
   };
 
@@ -144,7 +150,7 @@ export default function NotebookReader({ pdfUrl }) {
               onClick={() => {
                 setDocumentInfo(null);
                 setCurrent(0);
-                setError(false);
+                setError(null);
                 setAttempt((value) => value + 1);
               }}
             >
@@ -158,9 +164,9 @@ export default function NotebookReader({ pdfUrl }) {
             options={pdfOptions}
             suspense={false}
             onLoadSuccess={load}
-            onLoadError={() => setError(true)}
-            onSourceError={() => setError(true)}
-            onPassword={() => setError(true)}
+            onLoadError={reportError}
+            onSourceError={reportError}
+            onPassword={() => reportError(new Error("This PDF requires a password."))}
             loading={
               <p className="reader-message" role="status">
                 Loading notebook…

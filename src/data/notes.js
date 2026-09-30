@@ -18,8 +18,9 @@ export const notes = [
     title: "JavaScript",
     description: "Variables, functions, the DOM, and asynchronous programming.",
     category: "Javascript fundamentals",
+    // Change the version when replacing this file so browsers fetch the new PDF.
     pdfUrl:
-      "https://7gzqpnjsobpgngcp.public.blob.vercel-storage.com/JavaScript_notes.pdf",
+      "https://7gzqpnjsobpgngcp.public.blob.vercel-storage.com/JavaScript_notes.pdf?v=20260930-005945",
   },
   {
     id: "react",
