@@ -37,10 +37,10 @@ export const projects = [
   },
   {
     title: "Candogram",
-    type: "Team Project / Product Contribution",
+    type: "Team Project / Volunteer Contribution",
 
     description:
-      "I’m currently contributing to Candogram as a volunteer developer, working in an existing production codebase to help build and improve a resume generation and preview system. The feature supports customizable templates and lets users preview generated documents before downloading them.",
+      "Contributed to Candogram as a volunteer developer, working in an existing production codebase to build and improve its resume generation and preview system. The feature supports customizable templates and lets users preview generated documents before downloading them.",
 
     contribution:
       "Built the template selection, preview generation, and document customization flow.",
